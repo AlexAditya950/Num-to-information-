@@ -2,8 +2,17 @@ from flask import Flask, render_template, request, jsonify
 import phonenumbers
 from phonenumbers import geocoder, carrier, timezone
 import os
+from dotenv import load_dotenv   # Local .env support ke liye
+
+load_dotenv()   # .env file load karega local mein
 
 app = Flask(__name__)
+
+# Environment Variables se values le rahe hain
+BOT_TOKEN = os.environ.get('7107142138:AAExraW37E8AVrDXTJ4MAo3hTRAHKKcnvl4')
+API_ID = os.environ.get('20346550')
+API_HASH = os.environ.get('bc79c3bea7a626887bdc0871eecf0327')
+OWNER_ID = os.environ.get('8429473345')
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -13,7 +22,6 @@ def index():
             return render_template('index.html', error="Phone number daalo!")
         
         try:
-            # Agar + nahi hai toh add kar do (India ke liye default)
             if not number.startswith('+'):
                 number = '+91' + number if len(number) == 10 else '+' + number
             
@@ -33,7 +41,7 @@ def index():
             return render_template('index.html', info=info, number=number)
         
         except Exception as e:
-            return render_template('index.html', error=f"Invalid number ya error: {str(e)}")
+            return render_template('index.html', error=f"Invalid number: {str(e)}")
     
     return render_template('index.html')
 
@@ -47,7 +55,7 @@ def api_lookup():
     
     try:
         if not number.startswith('+'):
-            number = '+91' + number if len(number.replace('+','')) == 10 else '+' + number
+            number = '+91' + number if len(number.replace('+','').replace(' ','')) == 10 else '+' + number.replace(' ','')
         
         parsed = phonenumbers.parse(number)
         
