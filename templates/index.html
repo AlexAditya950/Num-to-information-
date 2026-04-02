@@ -1,1 +1,44 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Info - Phone Number Se Jankari</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f7f9; margin: 0; padding: 20px; }
+        .container { max-width: 700px; margin: 40px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { color: #1e3a8a; text-align: center; }
+        input[type="text"] { width: 100%; padding: 12px; font-size: 18px; border: 2px solid #ddd; border-radius: 8px; margin: 15px 0; }
+        button { background: #1e40af; color: white; padding: 12px 25px; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; }
+        button:hover { background: #1e3a8a; }
+        .result { margin-top: 20px; padding: 15px; background: #f0f9ff; border-radius: 8px; border-left: 5px solid #1e40af; }
+        .error { color: red; background: #fee2e2; padding: 10px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 Number to Information</h1>
+        <p style="text-align:center;">Phone number daalo (with +country code ya 10 digit Indian number)</p>
+        
+        <form method="POST">
+            <input type="text" name="number" placeholder="+919876543210 ya 9876543210" required>
+            <center><button type="submit">Jankari Nikalo</button></center>
+        </form>
 
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+
+        {% if info %}
+        <div class="result">
+            <h2>Result for: {{ info.number }}</h2>
+            <p><strong>Valid Number:</strong> {{ info.valid }}</p>
+            <p><strong>Country:</strong> {{ info.country }}</p>
+            <p><strong>Carrier/Provider:</strong> {{ info.carrier }}</p>
+            <p><strong>Timezone:</strong> {{ info.timezone }}</p>
+            <p><strong>Country Code:</strong> +{{ info.country_code }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
