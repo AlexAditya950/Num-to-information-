@@ -11,15 +11,15 @@ from telegram.ext import Application, CommandHandler, MessageHandler, filters, C
 # ==================== CONFIGURATION ====================
 
 API_BASE = "https://source-code-api.vercel.app/?num="
-BOT_TOKEN = "8506741628:AAEW_0e_hR2aeX9HtVuogNKJIbC-OKl5N-s"
+BOT_TOKEN = "7107142138:AAExraW37E8AVrDXTJ4MAo3hTRAHKKcnvl4"
 
-REQUIRED_CHANNEL_ID_1 = "@number_information_ss"
-JOIN_LINK_1 = "https://t.me/number_information_ss"
+REQUIRED_CHANNEL_ID_1 = "@num9663"
+JOIN_LINK_1 = "https://t.me/num9663"
 
-REQUIRED_CHANNEL_ID_2 = -1003414504961 
-JOIN_LINK_2 = "https://t.me/+HWySeHo-n304Njdl"
+REQUIRED_CHANNEL_ID_2 = -1003814864736 
+JOIN_LINK_2 = "https://t.me/num9663"
 
-OWNER_ID = 7376398670 
+OWNER_ID = 8429473345 
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Linux; Android 13; Termux) Gecko/117.0 Firefox/117.0",
